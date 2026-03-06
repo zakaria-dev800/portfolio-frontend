@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="520" viewBox="0 0 520 520">
+  <defs>
+    <pattern id="checker" width="12" height="12" patternUnits="userSpaceOnUse">
+      <rect width="12" height="12" fill="#2a2a2a"/>
+      <rect width="6" height="6" fill="#242424"/>
+      <rect x="6" y="6" width="6" height="6" fill="#242424"/>
+    </pattern>
+
+    <!--
+      Original image: text goes around ~3/4 of circle
+      Top-left portion: "FULL STACK WEB" 
+      Bottom-right portion: "DEVELOPER"
+      
+      Circle center: 260,260  radius: 180
+      Arc starts at bottom-left (~210°) and ends at bottom-right (~330°) going clockwise through top
+      
+      Start point at 210°: x=260+180*cos(210°)=260-155.9=104, y=260+180*sin(210°)=260-90=170
+      Actually let's trace original: starts left side going up, across top, down right side
+      
+      Start ~225° (bottom-left): 260+180*cos(225)=260-127=133, 260+180*sin(225)=260-127=133
+      End ~315° (bottom-right): 260+180*cos(315)=260+127=387, 260+180*sin(315)=260-127=133
+      Going clockwise (sweep=1) through top = large arc (flag=1)
+    -->
+    
+    <!-- Main arc: from bottom-left to bottom-right going clockwise through top -->
+    <!-- Start 225deg: (133, 133), End 315deg: (387, 133) -->
+    <path id="mainArc"
+      d="M 133,387 A 180,180 0 1,1 387,387"
+      fill="none"/>
+  </defs>
+
+  <!-- Background -->
+  <rect width="520" height="520" fill="url(#checker)"/>
+
+  <!-- Circle outline -->
+  <circle cx="260" cy="260" r="180" fill="none" stroke="#383838" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- Circular text -->
+  <text font-family="'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif"
+        font-size="27"
+        fill="#4a4a4a"
+        letter-spacing="5"
+        font-weight="400"
+        font-style="italic">
+    <textPath href="#mainArc" startOffset="50%" text-anchor="middle">
+      FULL STACK  WEB DEVELOPER
+    </textPath>
+  </text>
+
+</svg>
