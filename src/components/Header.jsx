@@ -11,7 +11,7 @@ export default function Header() {
             setUser(JSON.parse(cachedUser));
         }
 
-        fetch("http://127.0.0.1:8000/api/users/1")
+        fetch("https://portfolio-backend-production-013e.up.railway.app/api/users/1")
             .then((res) => res.json())
             .then((data) => {
                 setUser(data);
