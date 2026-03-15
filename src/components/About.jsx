@@ -89,20 +89,20 @@ export default function About() {
     const infoData = [
         {
             name: 'Languages',
-            icon1: './assets/code-icon.png',
-            icon2: './assets/code-icon-dark.png',
+            icon1: './frontend/dist/assets/code-icon.png',
+            icon2: './frontend/dist/assets/code-icon-dark.png',
             description: skills || 'Loading skills...',
         },
         {
             name: 'Education',
-            icon1: './assets/edu-icon.png',
-            icon2: './assets/edu-icon-dark.png',
+            icon1: './frontend/dist/assets/edu-icon.png',
+            icon2: './frontend/dist/assets/edu-icon-dark.png',
             description: education || 'Loading education...',
         },
         {
             name: 'Projects',
-            icon1: './assets/project-icon.png',
-            icon2: './assets/project-icon-dark.png',
+            icon1: './frontend/dist/assets/project-icon.png',
+            icon2: './frontend/dist/assets/project-icon-dark.png',
             description: `More than ${projectCount} advanced projects built`,
         },
     ];
