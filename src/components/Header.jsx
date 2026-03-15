@@ -6,13 +6,12 @@ export default function Header() {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        // 1. Check l-cache awel haja bach l-UI t-bqa dima sghira f l-bedya
+
         const cachedUser = localStorage.getItem("user_data");
         if (cachedUser) {
             setUser(JSON.parse(cachedUser));
         }
 
-        // 2. Jib l-data l-jdida mn l-API dial Railway
         fetch("https://portfolio-backend-production-013e.up.railway.app/api/users/1")
             .then((res) => res.json())
             .then((data) => {
@@ -22,7 +21,6 @@ export default function Header() {
             .catch((err) => console.error("Error fetching user data:", err));
     }, []);
 
-    // Loader sghir ila makantch l-data f l-cache
     if (!user) return (
         <div className="h-screen flex items-center justify-center bg-white dark:bg-gray-900">
             <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-purple-500"></div>
