@@ -6,22 +6,25 @@ export default function Header() {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
+        // 1. Check l-cache awel haja bach l-UI t-bqa dima sghira f l-bedya
         const cachedUser = localStorage.getItem("user_data");
         if (cachedUser) {
             setUser(JSON.parse(cachedUser));
         }
 
+        // 2. Jib l-data l-jdida mn l-API dial Railway
         fetch("https://portfolio-backend-production-013e.up.railway.app/api/users/1")
             .then((res) => res.json())
             .then((data) => {
                 setUser(data);
                 localStorage.setItem("user_data", JSON.stringify(data));
             })
-            .catch((err) => console.error(err));
+            .catch((err) => console.error("Error fetching user data:", err));
     }, []);
 
+    // Loader sghir ila makantch l-data f l-cache
     if (!user) return (
-        <div className="h-screen flex items-center justify-center">
+        <div className="h-screen flex items-center justify-center bg-white dark:bg-gray-900">
             <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-purple-500"></div>
         </div>
     );
@@ -54,17 +57,15 @@ export default function Header() {
 
             {/* ── Avatar ── */}
             <motion.div variants={itemVariants} className="relative">
-                {/* Rotating ring */}
                 <div className="absolute -inset-3 rounded-full border border-dashed border-purple-300/40 dark:border-purple-500/20 animate-spin_slow" />
                 <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-purple-500/20 to-orange-400/20 blur-sm" />
                 <motion.img
                     whileHover={{ scale: 1.06 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    src="./assets/profil_img.jpeg"
+                    src="./assets/profil_img.jpeg" // T-akked mn path f dossier public
                     alt={user.name}
                     className="rounded-full w-32 h-32 object-cover ring-4 ring-white dark:ring-gray-900 shadow-2xl relative z-10"
                 />
-                {/* Online badge */}
                 <div className="absolute bottom-1 right-1 z-20 w-5 h-5 bg-green-400 rounded-full ring-2 ring-white dark:ring-gray-900 flex items-center justify-center">
                     <div className="w-2 h-2 bg-green-300 rounded-full animate-ping absolute" />
                 </div>
@@ -130,9 +131,8 @@ export default function Header() {
                 <motion.a
                     whileHover={{ scale: 1.04, y: -2 }}
                     whileTap={{ scale: 0.97 }}
-                    href="contact"
+                    href="#contact"
                     className="group px-8 py-3.5 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold text-sm flex items-center gap-2.5 shadow-lg hover:shadow-purple-500/25 hover:bg-purple-600 dark:hover:bg-purple-500 dark:hover:text-white transition-all duration-300"
-                    style={{ fontFamily: 'Syne, sans-serif' }}
                 >
                     Contact me
                     <span className="w-5 h-5 rounded-full bg-white/20 dark:bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform text-[10px]">→</span>
@@ -141,10 +141,10 @@ export default function Header() {
                 <motion.a
                     whileHover={{ scale: 1.04, y: -2 }}
                     whileTap={{ scale: 0.97 }}
-                    href={`http://localhost:8000/storage/${user.cv_pdf}`} 
+                    // L-URL dial Railway direct bach i-te7el l-CV f ay blassa
+                    href={`https://portfolio-backend-production-013e.up.railway.app/storage/${user.cv_pdf}`}
                     target="_blank"
                     className="px-8 py-3.5 rounded-full border border-gray-200 dark:border-white/15 text-gray-700 dark:text-white text-sm font-semibold flex items-center gap-2.5 hover:border-purple-400 dark:hover:border-purple-500/50 hover:bg-purple-50 dark:hover:bg-purple-500/8 transition-all duration-300 bg-white/60 dark:bg-transparent backdrop-blur-sm"
-                    style={{ fontFamily: 'Syne, sans-serif' }}
                 >
                     My resume
                     <img src="./assets/download-icon.png" alt="" className="w-3.5 dark:invert opacity-70" />
