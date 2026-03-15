@@ -13,7 +13,7 @@ export default function Navbar() {
     const [activeSection, setActiveSection] = useState('header');
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/users/1")
+        fetch("https://portfolio-backend-production-013e.up.railway.app/api/users/1")
             .then((res) => res.json())
             .then((res) => {
                 const userData = res.status ? res.data : res;

@@ -9,7 +9,7 @@ export default function Services() {
     const [loading, setLoading] = useState(projects.length === 0);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/projects")
+        fetch("https://portfolio-backend-production-013e.up.railway.app/api/projects")
             .then((res) => res.json())
             .then((res) => {
                 if (res.status) {

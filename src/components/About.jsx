@@ -29,9 +29,9 @@ export default function About() {
             try {
                 // 2. Fetch fresh data
                 const [skillsRes, eduRes, projectsRes] = await Promise.all([
-                    fetch("http://127.0.0.1:8000/api/skills").then(r => r.json()),
-                    fetch("http://127.0.0.1:8000/api/educations").then(r => r.json()),
-                    fetch("http://127.0.0.1:8000/api/projects").then(r => r.json())
+                    fetch("https://portfolio-backend-production-013e.up.railway.app/api/skills").then(r => r.json()),
+                    fetch("https://portfolio-backend-production-013e.up.railway.app/api/educations").then(r => r.json()),
+                    fetch("https://portfolio-backend-production-013e.up.railway.app/api/projects").then(r => r.json())
                 ]);
 
                 let newData = {};

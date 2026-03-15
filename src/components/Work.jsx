@@ -10,7 +10,7 @@ export default function Work() {
     const [loading, setLoading] = useState(works.length === 0);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/services')
+        fetch('https://portfolio-backend-production-013e.up.railway.app/api/services')
             .then(res => res.json())
             .then(json => {
                 if (json.status) {

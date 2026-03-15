@@ -60,7 +60,7 @@ export default function Header() {
                 <motion.img
                     whileHover={{ scale: 1.06 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    src="./assets/profil_img.jpeg" // T-akked mn path f dossier public
+                    src="./assets/profil_img.jpeg" 
                     alt={user.name}
                     className="rounded-full w-32 h-32 object-cover ring-4 ring-white dark:ring-gray-900 shadow-2xl relative z-10"
                 />
@@ -139,8 +139,8 @@ export default function Header() {
                 <motion.a
                     whileHover={{ scale: 1.04, y: -2 }}
                     whileTap={{ scale: 0.97 }}
-                    // L-URL dial Railway direct bach i-te7el l-CV f ay blassa
-                    href={`https://portfolio-backend-production-013e.up.railway.app/storage/${user.cv_pdf}`}
+
+                    href="https://portfolio-backend-production-013e.up.railway.app/storage/cv/cv_mamma.pdf"
                     target="_blank"
                     className="px-8 py-3.5 rounded-full border border-gray-200 dark:border-white/15 text-gray-700 dark:text-white text-sm font-semibold flex items-center gap-2.5 hover:border-purple-400 dark:hover:border-purple-500/50 hover:bg-purple-50 dark:hover:bg-purple-500/8 transition-all duration-300 bg-white/60 dark:bg-transparent backdrop-blur-sm"
                 >

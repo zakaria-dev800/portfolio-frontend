@@ -15,7 +15,7 @@ export default function Footer() {
     const year = new Date().getFullYear();
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/api/users/1")
+        fetch("https://portfolio-backend-production-013e.up.railway.app/api/users/1")
             .then((res) => res.json())
             .then((res) => {
                 const userData = res.status ? res.data : res;
@@ -24,7 +24,7 @@ export default function Footer() {
             })
             .catch((err) => console.error("Footer User Error:", err));
 
-        fetch("http://127.0.0.1:8000/api/links")
+        fetch("https://portfolio-backend-production-013e.up.railway.app/api/links")
             .then((res) => res.json())
             .then((res) => {
                 if (res.status && res.data) {
