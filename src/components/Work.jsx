@@ -18,7 +18,7 @@ export default function Work() {
                     localStorage.setItem("work_services_cache", JSON.stringify(json.data));
                 }
             })
-            .catch(err => console.error("Erreur API:", err))
+            .catch(err => console.error("Erreur API Work:", err))
             .finally(() => setLoading(false));
     }, []);
 
@@ -62,10 +62,11 @@ export default function Work() {
                                 whileHover={{ scale: 1.03, zIndex: 10 }}
                                 className="group relative aspect-square rounded-2xl overflow-hidden cursor-pointer bg-gray-100/40 dark:bg-zinc-900/40 backdrop-blur-sm border border-gray-200/50 dark:border-white/5 shadow-sm transition-all duration-500"
                             >
-                                {/* Background image */}
                                 <div
                                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                    style={{ backgroundImage: `url(${item.icon || './assets/work-1.png'})` }}
+                                    style={{
+                                        backgroundImage: `url(${item.icon || '/frontend/dist/assets/work-1.png'})`
+                                    }}
                                 />
 
                                 {/* Base overlay */}
@@ -98,7 +99,7 @@ export default function Work() {
                                     </div>
                                 </div>
 
-                                {/* Bottom underline effect like About */}
+                                {/* Bottom underline effect */}
                                 <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-purple-500 group-hover:w-full transition-all duration-500" />
                             </motion.div>
                         ))

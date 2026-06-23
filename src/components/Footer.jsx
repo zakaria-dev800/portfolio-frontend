@@ -15,6 +15,7 @@ export default function Footer() {
     const year = new Date().getFullYear();
 
     useEffect(() => {
+        // Fetch User Data
         fetch("https://portfolio-backend-production-013e.up.railway.app/api/users/1")
             .then((res) => res.json())
             .then((res) => {
@@ -24,6 +25,7 @@ export default function Footer() {
             })
             .catch((err) => console.error("Footer User Error:", err));
 
+        // Fetch Social Links
         fetch("https://portfolio-backend-production-013e.up.railway.app/api/links")
             .then((res) => res.json())
             .then((res) => {
@@ -37,6 +39,7 @@ export default function Footer() {
 
     return (
         <footer className="w-full bg-transparent mt-20">
+            {/* Divider Line */}
             <div className="mx-[10%] h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/10 to-transparent" />
 
             <div className="px-[10%] py-16">
@@ -55,8 +58,8 @@ export default function Footer() {
                             className="flex items-center gap-3 group mt-2"
                         >
                             <div className="w-9 h-9 rounded-xl bg-white dark:bg-white/5 flex items-center justify-center border border-gray-200 dark:border-white/10 group-hover:border-purple-500/50 transition-all duration-300">
-                                <img src="./assets/mail_icon.png" alt="" className="w-4 dark:hidden" />
-                                <img src="./assets/mail_icon_dark.png" alt="" className="w-4 hidden dark:block" />
+                                <img src="/frontend/dist/assets/mail_icon.png" alt="" className="w-4 dark:hidden" />
+                                <img src="/frontend/dist/assets/mail_icon_dark.png" alt="" className="w-4 hidden dark:block" />
                             </div>
                             <span className="text-sm text-gray-600 dark:text-white/50 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors font-Ovo">
                                 {user.email}
@@ -64,7 +67,7 @@ export default function Footer() {
                         </a>
                     </div>
 
-                    {/* Dynamic Social Links mn Cache/API */}
+                    {/* Dynamic Social Links */}
                     <nav className="flex items-center p-1 bg-white/50 dark:bg-white/5 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-white/10">
                         {socials.length > 0 ? (
                             socials.map((s) => (
@@ -79,7 +82,7 @@ export default function Footer() {
                                 </a>
                             ))
                         ) : (
-                            <div className="px-5 py-2 text-xs text-gray-400 animate-pulse">Loading...</div>
+                            <div className="px-5 py-2 text-xs text-gray-400 animate-pulse font-Ovo">Loading links...</div>
                         )}
                     </nav>
                 </div>

@@ -10,7 +10,6 @@ export default function Contact() {
         setStatus({ sending: true, message: '', type: '' });
 
         const formData = new FormData(event.target);
-        // Had l-key hiya li m-lyia m3a l-email dyalk
         formData.append("access_key", "ded82aaf-cfea-42a6-9fa3-3b48de590666");
 
         try {
@@ -22,7 +21,7 @@ export default function Contact() {
 
             if (data.success) {
                 setStatus({ sending: false, message: 'Message sent successfully!', type: 'success' });
-                event.target.reset(); // Khwiti l-form
+                event.target.reset();
             } else {
                 setStatus({ sending: false, message: data.message || 'Error sending message.', type: 'error' });
             }
@@ -35,7 +34,7 @@ export default function Contact() {
 
     return (
         <section id="contact" className="w-full px-[12%] py-24 relative overflow-hidden bg-transparent">
-            {/* Ambient Glow */}
+            {/* Ambient Glow background */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/5 blur-[120px] rounded-full -z-10" />
 
             <div className="relative z-10 max-w-2xl mx-auto">
@@ -43,12 +42,30 @@ export default function Contact() {
 
                     <form onSubmit={onSubmit}>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                            <input name="name" type="text" placeholder="Your name" className={inputClass} required />
-                            <input name="email" type="email" placeholder="Your email" className={inputClass} required />
+                            <input
+                                name="name"
+                                type="text"
+                                placeholder="Your name"
+                                className={inputClass}
+                                required
+                            />
+                            <input
+                                name="email"
+                                type="email"
+                                placeholder="Your email"
+                                className={inputClass}
+                                required
+                            />
                         </div>
 
                         <div className="mb-5">
-                            <textarea name="message" rows="5" placeholder="How can I help you?" className={`${inputClass} resize-none`} required />
+                            <textarea
+                                name="message"
+                                rows="5"
+                                placeholder="How can I help you?"
+                                className={`${inputClass} resize-none`}
+                                required
+                            />
                         </div>
 
                         <button
@@ -56,15 +73,32 @@ export default function Contact() {
                             disabled={status.sending}
                             className="group w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 py-4 rounded-full font-bold hover:bg-purple-600 dark:hover:bg-purple-500 transition-all shadow-xl disabled:opacity-50"
                         >
-                            {status.sending ? 'Sending...' : 'Send Message'}
+                            {status.sending ? (
+                                <span className="flex items-center justify-center gap-2">
+                                    {/* Spinner sghir */}
+                                    <div className="w-4 h-4 border-2 border-gray-400 border-t-white rounded-full animate-spin"></div>
+                                    Sending...
+                                </span>
+                            ) : 'Send Message'}
                         </button>
 
+                        {/* Status Messages */}
                         {status.message && (
-                            <div className={`mt-4 p-3 rounded-xl text-center text-sm ${status.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>
+                            <div className={`mt-4 p-3 rounded-xl text-center text-sm ${status.type === 'success'
+                                    ? 'bg-green-500/10 text-green-500 border border-green-500/20'
+                                    : 'bg-red-500/10 text-red-500 border border-red-500/20'
+                                }`}>
                                 {status.message}
                             </div>
                         )}
                     </form>
+                </div>
+
+                {/* Optional: Add a small social link or email hint below the form */}
+                <div className="mt-8 text-center">
+                    <p className="text-gray-500 dark:text-white/40 text-sm">
+                        Or reach out directly at <span className="text-purple-500">zakaria.elkorchi@gmail.com</span>
+                    </p>
                 </div>
             </div>
         </section>

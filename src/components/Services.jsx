@@ -17,7 +17,7 @@ export default function Services() {
                     localStorage.setItem("projects_cache", JSON.stringify(res.data));
                 }
             })
-            .catch((err) => console.error(err))
+            .catch((err) => console.error("Services Fetch Error:", err))
             .finally(() => setLoading(false));
     }, []);
 
@@ -62,7 +62,7 @@ function ProjectCard({ project, index }) {
             className="group relative rounded-2xl bg-white/50 dark:bg-gray-900/20 backdrop-blur-sm border border-gray-300 dark:border-white/20 p-8 h-full flex flex-col transition-all duration-300 hover:shadow-2xl hover:border-purple-500/50"
         >
             <div className="w-12 h-12 bg-gray-100 dark:bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors duration-300">
-                <img src="./assets/web-icon.png" alt="" className="w-6 dark:invert group-hover:invert" />
+                <img src="/frontend/dist/assets/web-icon.png" alt="" className="w-6 dark:invert group-hover:invert" />
             </div>
 
             <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-purple-600 transition-colors">
@@ -75,15 +75,16 @@ function ProjectCard({ project, index }) {
 
             <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-white/10">
                 <a
-                    href={project.link_project} 
-                    target="_blank"            
+                    href={project.link_project}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-xs font-bold uppercase tracking-widest text-gray-600 dark:text-white/60 hover:text-purple-600 transition-colors"
                 >
                     View Project →
                 </a>
             </div>
 
-            {/* Underline b7al dyal About */}
+            {/* Hover Underline */}
             <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-purple-600 group-hover:w-full transition-all duration-500" />
         </motion.div>
     );

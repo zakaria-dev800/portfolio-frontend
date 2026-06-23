@@ -60,7 +60,7 @@ export default function Header() {
                 <motion.img
                     whileHover={{ scale: 1.06 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    src="./assets/profil_img.jpeg" 
+                    src="/frontend/dist/assets/profil_img.jpeg"
                     alt={user.name}
                     className="rounded-full w-32 h-32 object-cover ring-4 ring-white dark:ring-gray-900 shadow-2xl relative z-10"
                 />
